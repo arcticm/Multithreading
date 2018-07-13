@@ -4,6 +4,7 @@ import java.util.Map;
 
 public class Numbers {
     private static Map<String, Integer> data = new HashMap<String, Integer>();
+    private static Map<Integer, String> dataReverse = new HashMap<Integer, String>();
 
     static {
         data.put("one", 1);
@@ -35,19 +36,18 @@ public class Numbers {
         data.put("ninety", 90);
         data.put("hundred", 100);
         data.put("thousand", 1000);
-        isCorrectInput = true;
     }
     
     public static int parsingToInt(String stringOfNumbers) {
         String[] numbers = stringOfNumbers.split(" ");
         int result = 0;
         int finalResult = 0;
-        for(String number : numbers) {
+        for (String number : numbers) {
             int current = data.get(number);
-            if(current == 100) {
+            if (current == 100) {
                 result *= current;
             } 
-            else if(current == 1000) {
+            else if (current == 1000) {
                 result *= current;
                 finalResult += result;
                 result = 0;    
@@ -63,8 +63,8 @@ public class Numbers {
     
     public static boolean isCorrectInput(String stringOfNumbers) {
         String[] numbers = stringOfNumbers.split(" ");
-        for(String number : numbers) {
-            if(!data.containsKey(number)) {
+        for (String number : numbers) {
+            if (!data.containsKey(number)) {
                 return false;
             }
         }
